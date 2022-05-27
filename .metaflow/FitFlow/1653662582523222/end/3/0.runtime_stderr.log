@@ -1,0 +1,2 @@
+[MFLOG|0|2022-05-27T14:43:11.447023Z|runtime|9e78d85c-6309-4dd1-8cbc-8b978c384392]2022-05-27 16:43:11.446854: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+[MFLOG|0|2022-05-27T14:43:14.324566Z|runtime|18d05261-7243-4b5d-90e8-3b546a818fcc]2022-05-27 16:43:11.446906: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.

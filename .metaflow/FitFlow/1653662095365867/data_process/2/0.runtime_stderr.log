@@ -1,0 +1,32 @@
+[MFLOG|0|2022-05-27T14:35:01.858759Z|runtime|de47ac9c-8819-45f1-b6b4-bf4d78f5200f]2022-05-27 16:35:01.858605: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+[MFLOG|0|2022-05-27T14:35:03.588144Z|runtime|6b0f0925-f921-4df6-8480-34e437970a44]2022-05-27 16:35:01.858664: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+[MFLOG|0|2022-05-27T14:35:03.588543Z|runtime|a87394b5-1245-4ab1-b2eb-873fb6be92ff]<flow FitFlow step data_process> failed:
+[MFLOG|0|2022-05-27T14:35:03.946522Z|runtime|b52da3eb-7ea3-4e85-9ae1-5a8be8e19bfe]    Internal error
+[MFLOG|0|2022-05-27T14:35:03.948294Z|runtime|4624dce9-9d1d-40b2-b595-1903502bd811]Traceback (most recent call last):
+[MFLOG|0|2022-05-27T14:35:03.948552Z|runtime|be0343eb-38b7-4a7d-8b2b-6b26779b1f13]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/cli.py", line 1101, in main
+[MFLOG|0|2022-05-27T14:35:03.948795Z|runtime|5194d0ca-7cde-4879-8781-c9dd7d573a9d]    start(auto_envvar_prefix="METAFLOW", obj=state)
+[MFLOG|0|2022-05-27T14:35:03.949003Z|runtime|2b3367a9-51d1-4246-9e27-7b9c89c31b23]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/_vendor/click/core.py", line 829, in __call__
+[MFLOG|0|2022-05-27T14:35:03.949210Z|runtime|917c9d2a-653c-48ae-864c-1e2b1ba905ca]    return self.main(args, kwargs)
+[MFLOG|0|2022-05-27T14:35:03.949387Z|runtime|f5b71487-2418-4ea1-926d-c81efdc34a0f]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/_vendor/click/core.py", line 782, in main
+[MFLOG|0|2022-05-27T14:35:03.949564Z|runtime|95929e29-4ee7-4880-a9c4-66f7ca578d80]    rv = self.invoke(ctx)
+[MFLOG|0|2022-05-27T14:35:03.949735Z|runtime|a7bb851f-a711-45fa-b70c-d299495bc1d3]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/_vendor/click/core.py", line 1259, in invoke
+[MFLOG|0|2022-05-27T14:35:03.949871Z|runtime|ab9b3bc6-5f63-4f64-8349-cfd7d880f531]    return _process_result(sub_ctx.command.invoke(sub_ctx))
+[MFLOG|0|2022-05-27T14:35:03.950033Z|runtime|78935c4a-615b-4bb2-b327-bef33a982351]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/_vendor/click/core.py", line 1066, in invoke
+[MFLOG|0|2022-05-27T14:35:03.950177Z|runtime|6f101856-1817-4832-8f9e-1acfec9801c1]    return ctx.invoke(self.callback, ctx.params)
+[MFLOG|0|2022-05-27T14:35:04.269826Z|runtime|1921043c-427f-4034-bec5-a759ce9bd096]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/_vendor/click/core.py", line 610, in invoke
+[MFLOG|0|2022-05-27T14:35:04.270053Z|runtime|527837cb-f3d4-4b5e-b9f7-42f725cb82a6]    return callback(args, kwargs)
+[MFLOG|0|2022-05-27T14:35:04.270190Z|runtime|721dd4a5-a42c-4d86-8d79-8098b8f9dcca]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/_vendor/click/decorators.py", line 21, in new_func
+[MFLOG|0|2022-05-27T14:35:04.270306Z|runtime|3305f179-2fc9-4ea8-bf82-04644062c1b2]    return f(get_current_context(), args, kwargs)
+[MFLOG|0|2022-05-27T14:35:04.270464Z|runtime|1732ffbc-b9c8-41e5-b3df-460f70ca6eb6]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/cli.py", line 556, in step
+[MFLOG|0|2022-05-27T14:35:04.270615Z|runtime|1075a244-d339-4382-bfa3-3f558f007f52]    task.run_step(
+[MFLOG|0|2022-05-27T14:35:04.270713Z|runtime|52d83567-e437-4375-9cb4-098d005e8001]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/task.py", line 554, in run_step
+[MFLOG|0|2022-05-27T14:35:04.270810Z|runtime|fd84a3be-0ea4-413d-a2b6-fedd5d120dae]    self._exec_step_function(step_func)
+[MFLOG|0|2022-05-27T14:35:04.270903Z|runtime|a5f1f33e-668e-46bf-9752-4f5e82f3ba62]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/task.py", line 53, in _exec_step_function
+[MFLOG|0|2022-05-27T14:35:04.270999Z|runtime|7ab6f83d-75fe-4e7c-a0eb-d1e0999ec96e]    step_function()
+[MFLOG|0|2022-05-27T14:35:04.271092Z|runtime|3be8eb08-0377-499f-a32c-6bfd2c682eb6]  File "Siamese_CNN_model__identical_image.py", line 13, in data_process
+[MFLOG|0|2022-05-27T14:35:04.271204Z|runtime|c444ba79-45b6-48cd-9cce-b043212e79fc]    print('the data artifact is: %s' % self.my_var)
+[MFLOG|0|2022-05-27T14:35:04.271300Z|runtime|937d3f9b-a293-4827-a4b8-ead6ff5dbae8]  File "/home/nicolas_bzrd/Multi-Video-Temporal-Synchronization/lib/python3.8/site-packages/metaflow/flowspec.py", line 223, in __getattr__
+[MFLOG|0|2022-05-27T14:35:04.271395Z|runtime|0d6e447b-cdda-47f2-9803-7bea7c41f2ef]    raise AttributeError("Flow %s has no attribute '%s'" % (self.name, name))
+[MFLOG|0|2022-05-27T14:35:04.271525Z|runtime|39ec0d81-af1b-4fdf-84ce-cca36dc5fef1]AttributeError: Flow FitFlow has no attribute 'my_var'
+[MFLOG|0|2022-05-27T14:35:04.271623Z|runtime|5d7774ac-c13e-4c55-bebe-7eb4775b737c]
+[MFLOG|0|2022-05-27T14:35:04.319884Z|runtime|a99462f8-16e7-4dc0-a0d4-c63544c555f5]Task failed.
