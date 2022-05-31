@@ -1,4 +1,3 @@
-from cgi import test
 import os
 import tensorflow as tf
 import matplotlib.pyplot as plt
@@ -39,6 +38,7 @@ class Dataset:
         self.dataset_size = numberImages*2
         self.dataset = tf.data.Dataset.sample_from_datasets([pair, wrong], weights=[0.5, 0.5])
 
+
     def splitData(self, train_size=0.8, test_size=0.2):
         ds_train=self.dataset.take(int(self.dataset_size*train_size))
         ds_test=self.dataset.skip(int(self.dataset_size*test_size))
@@ -46,6 +46,7 @@ class Dataset:
         ds_train = ds_train.shuffle(300).batch(64)
 
         return ds_train, ds_test
+
 
     def showImages(self, number = 10):
         for images, labels in self.dataset.take(number):

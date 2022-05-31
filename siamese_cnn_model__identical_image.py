@@ -13,14 +13,15 @@ def my_app(cfg: DictConfig) -> None:
 
     # Init all classes
     dataset = Dataset(f"{os.getcwd()}/{cfg.db.path}")
-    siameseCNN = SiameseCNN()
-    siameseCNN.model.compile(loss="binary_crossentropy", optimizer="Adam", metrics=["accuracy"])
+    print(len(dataset.dataset))
+    # siameseCNN = SiameseCNN()
+    # siameseCNN.model.compile(loss="binary_crossentropy", optimizer="Adam", metrics=["accuracy"])
 
-    ds_train, ds_test = dataset.splitData()
+    # ds_train, ds_test = dataset.splitData()
 
 
 
-    siameseCNN.model.fit(ds_train)
+    # siameseCNN.model.fit(ds_train)
 
     # Split dataset
 
