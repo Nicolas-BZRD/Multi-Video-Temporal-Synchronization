@@ -1,23 +1,28 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-from metaflow import FlowSpec, step
-from model.Siamese import SiameseCNN
+import hydra
+from omegaconf import DictConfig, OmegaConf
 
-class FitFlow(FlowSpec):
-    @step
-    def start(self):
-        self.siamese_cnn = SiameseCNN()
-        self.next(self.data_process)
+from models.Siamese import SiameseCNN
+from tools.data import Dataset
 
-    @step
-    def data_process(self):
-        self.next(self.end)
+@hydra.main(version_base=None, config_path="configs", config_name="siamese_config")
+def my_app(cfg: DictConfig) -> None:
+    print(OmegaConf.to_yaml(cfg))
 
-    @step
-    def end(self):
-        print("this is the end !")
+    # Init all classes
+    dataset = Dataset(f"{os.getcwd()}/{cfg.db.path}")
+    siameseCNN = SiameseCNN()
+    siameseCNN.model.compile(loss="binary_crossentropy", optimizer="Adam", metrics=["accuracy"])
+
+    ds_train, ds_test = dataset.splitData()
 
 
-if __name__ == '__main__':
-    FitFlow()
+
+    siameseCNN.model.fit(ds_train)
+
+    # Split dataset
+
+if __name__ == "__main__":
+    my_app()
