@@ -42,7 +42,7 @@ class Dataset:
         self.data = tf.data.Dataset.sample_from_datasets([pair, wrong], weights=[0.5, 0.5])
 
 
-    def splitData(self, train_size=0.7, validation_size=0.15, test_size=0.15):
+    def splitData(self, train_size=0.8, validation_size=0.1, test_size=0.1):
         ds_train=self.data.take(int(self.size*train_size))
         tmp=self.data.skip(int(self.size*train_size))
 
