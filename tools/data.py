@@ -46,10 +46,8 @@ class Dataset:
         ds_train=self.data.take(int(self.size*train_size))
         tmp=self.data.skip(int(self.size*train_size))
 
-        tmp_size = self.size - int(self.size*train_size)
-
-        ds_validation = tmp.take(int(tmp_size*validation_size))
-        ds_test = tmp.skip(int(tmp_size*validation_size))
+        ds_validation = tmp.take(int(self.size*validation_size))
+        ds_test = tmp.skip(int(self.size*test_size))
 
         ds_train = ds_train.shuffle(300).batch(64)
         ds_validation = ds_validation.batch(64)

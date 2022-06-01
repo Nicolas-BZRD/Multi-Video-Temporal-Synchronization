@@ -22,7 +22,6 @@ def my_app(cfg: DictConfig) -> None:
 
     # Test
     result = siameseCNN.model.evaluate(ds_test)
-    print(result)
 
 
 if __name__ == "__main__":
