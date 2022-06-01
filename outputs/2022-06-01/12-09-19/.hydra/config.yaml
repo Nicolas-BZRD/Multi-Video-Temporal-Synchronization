@@ -1,0 +1,7 @@
+db:
+  path: datasets/ISIA
+model:
+  dropout1: 0
+  dropout2: 0
+  dropout3: 0
+  dropout4: 0

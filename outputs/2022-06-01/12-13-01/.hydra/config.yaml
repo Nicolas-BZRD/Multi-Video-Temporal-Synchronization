@@ -1,0 +1,8 @@
+db:
+  path: datasets/ISIA
+  img_shape: (224, 224, 1)
+model:
+  dropout1: 0
+  dropout2: 0
+  dropout3: 0
+  dropout4: 0

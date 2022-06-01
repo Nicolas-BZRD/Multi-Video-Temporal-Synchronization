@@ -1,0 +1,10 @@
+db:
+  path: datasets/ISIA
+  img_width: 224
+  img_heigth: 224
+  grayscale: true
+model:
+  dropout1: 0
+  dropout2: 0
+  dropout3: 0
+  dropout4: 0

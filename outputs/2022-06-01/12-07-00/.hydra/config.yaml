@@ -1,0 +1,4 @@
+db:
+  path: datasets/ISIA
+model:
+  droptout1: 0

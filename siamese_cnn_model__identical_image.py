@@ -12,9 +12,8 @@ def my_app(cfg: DictConfig) -> None:
     print(OmegaConf.to_yaml(cfg))
 
     # Init all classes
-    dataset = Dataset(f"{os.getcwd()}/{cfg.db.path}")
-    siameseCNN = SiameseCNN()
-
+    dataset = Dataset(cfg.db)
+    siameseCNN = SiameseCNN(cfg.model, dataset.shape)
     # Process dataset
     ds_train, ds_validation, ds_test = dataset.splitData()
 
