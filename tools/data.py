@@ -27,11 +27,11 @@ class Dataset:
         pair = tf.data.Dataset.zip((ds[2], ds[3]))
 
         # Create labels
-        wrongLables = tf.zeros([len(numberImages)])
+        wrongLables = tf.zeros([numberImages])
         wrongLables = tf.data.Dataset.from_tensor_slices(wrongLables)
         wrong = tf.data.Dataset.zip((wrong, wrongLables))
 
-        pairLabels = tf.ones([len(numberImages)])
+        pairLabels = tf.ones([numberImages])
         pairLabels = tf.data.Dataset.from_tensor_slices(pairLabels)
         pair = tf.data.Dataset.zip((pair, pairLabels))
 
