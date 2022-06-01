@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 class Dataset:
     def __init__(self, path) -> None:
-        path = r"C:\Users\Nicolas Boizard\OneDrive - JUNIA Grande école d'ingénieurs\M2\AI\Multi-Video-Temporal-Synchronization\datasets\ISIA"
+        path = fr"{path}"
         numberImages = len(os.listdir(fr"{path}/0/left"))
 
         # Get data from all the directories
