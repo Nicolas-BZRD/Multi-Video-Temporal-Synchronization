@@ -53,6 +53,7 @@ class Dataset:
 
         ds_train = ds_train.shuffle(300).batch(64)
         ds_validation = ds_validation.batch(64)
+        ds_test = ds_test.batch(64)
 
         return ds_train, ds_validation, ds_test
 

@@ -12,19 +12,19 @@ class SiameseCNN():
 
         cnn.add(layers.Conv2D(48, (3, 3), activation='relu'))
         cnn.add(layers.MaxPooling2D((2, 2)))
-        cnn.add(layers.Dropout(cfg.dropout1))
+        cnn.add(layers.Dropout(cfg.dropout.first))
 
         cnn.add(layers.Conv2D(48, (3, 3), activation='relu'))
         cnn.add(layers.MaxPooling2D((2, 2)))
-        cnn.add(layers.Dropout(cfg.dropout2))
+        cnn.add(layers.Dropout(cfg.dropout.second))
 
         cnn.add(layers.Conv2D(64, (3, 3), activation='relu'))
         cnn.add(layers.MaxPooling2D((2, 2)))
-        cnn.add(layers.Dropout(cfg.dropout3))
+        cnn.add(layers.Dropout(cfg.dropout.third))
 
         cnn.add(layers.GlobalAveragePooling2D())
         cnn.add(layers.Dense(48, activation='relu'))
-        cnn.add(layers.Dropout(cfg.dropout4))
+        cnn.add(layers.Dropout(cfg.dropout.fourth))
 
         # Generate the encodings (feature vectors) for the two images
         left_feats = cnn(left_input)
