@@ -21,7 +21,7 @@ def my_app(cfg: DictConfig) -> None:
     siameseCNN.model.fit(ds_train, epochs=10, validation_data=ds_validation)
 
     # Test
-    result = siameseCNN.model.evaluate()
+    result = siameseCNN.model.evaluate(ds_test)
     print(result)
 
 
