@@ -12,19 +12,19 @@ class SiameseCNN():
 
         cnn.add(layers.Conv2D(48, (3, 3), activation='relu'))
         cnn.add(layers.MaxPooling2D((2, 2)))
-        cnn.add(layers.Dropout(0.40))
+        cnn.add(layers.Dropout(0.30))
 
         cnn.add(layers.Conv2D(48, (3, 3), activation='relu'))
         cnn.add(layers.MaxPooling2D((2, 2)))
-        cnn.add(layers.Dropout(0.50))
+        cnn.add(layers.Dropout(0.40))
 
         cnn.add(layers.Conv2D(64, (3, 3), activation='relu'))
         cnn.add(layers.MaxPooling2D((2, 2)))
-        cnn.add(layers.Dropout(0.65))
+        cnn.add(layers.Dropout(0.5))
 
         cnn.add(layers.GlobalAveragePooling2D())
         cnn.add(layers.Dense(48, activation='relu'))
-        cnn.add(layers.Dropout(0.8))
+        cnn.add(layers.Dropout(0.65))
 
         # Generate the encodings (feature vectors) for the two images
         left_feats = cnn(left_input)
@@ -39,3 +39,6 @@ class SiameseCNN():
 
         # Connect the inputs with the outputs
         self.model = models.Model(inputs=[left_input,right_input],outputs=prediction)
+
+        # Compile the model
+        self.model.compile(loss="binary_crossentropy", optimizer="Adam", metrics=["accuracy"])

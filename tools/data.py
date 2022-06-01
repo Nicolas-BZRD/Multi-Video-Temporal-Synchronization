@@ -1,51 +1,57 @@
 import os
+from numpy import number
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
 class Dataset:
     def __init__(self, path) -> None:
-        path = fr"{path}"
+        path = r"C:\Users\Nicolas Boizard\OneDrive - JUNIA Grande école d'ingénieurs\M2\AI\Multi-Video-Temporal-Synchronization\datasets\ISIA"
         numberImages = len(os.listdir(fr"{path}/0/left"))
 
-        # Create a wrong pair of images dataset.
-        leftWrong = tf.keras.utils.image_dataset_from_directory(fr"{path}/0/left", labels=None, color_mode="grayscale",
-        batch_size=None, image_size=(224, 224), shuffle=False)
+        # Get data from all the directories
+        ds = [] #0->leftWrong, 1->rightWrong, 2->leftPair, 3->rightPair
+        for label in range(0,2):
+            for side in ['left', 'right']:
+                tmp = tf.keras.utils.image_dataset_from_directory(
+                    fr"{path}/{label}/{side}",
+                    color_mode="grayscale",
+                    image_size=(224, 224),
+                    batch_size=None,
+                    labels=None,
+                    shuffle=False
+                )
+                tmp = tmp.map(lambda x: x/255)
+                ds.append(tmp)
 
-        rightWrong = tf.keras.utils.image_dataset_from_directory(fr"{path}/0/right", labels=None, color_mode="grayscale",
-        batch_size=None, image_size=(224, 224), shuffle=False)
-
-        wrong = tf.data.Dataset.zip((leftWrong, rightWrong))
-
-        # Create a dataset of correct pair images.
-        leftPair = tf.keras.utils.image_dataset_from_directory(fr"{path}/1/left", labels=None, color_mode="grayscale",
-        batch_size=None,image_size=(224, 224),shuffle=False)
-
-        rightPair = tf.keras.utils.image_dataset_from_directory(fr"{path}/1/right", labels=None, color_mode="grayscale",
-        batch_size=None, image_size=(224, 224), shuffle=False)
-
-        pair = tf.data.Dataset.zip((leftPair, rightPair))
+        wrong = tf.data.Dataset.zip((ds[0], ds[1]))
+        pair = tf.data.Dataset.zip((ds[2], ds[3]))
 
         # Create labels
-        wrongLables = tf.zeros([numberImages])
+        wrongLables = tf.zeros([len(numberImages)])
         wrongLables = tf.data.Dataset.from_tensor_slices(wrongLables)
         wrong = tf.data.Dataset.zip((wrong, wrongLables))
 
-        pairLabels = tf.ones([numberImages])
+        pairLabels = tf.ones([len(numberImages)])
         pairLabels = tf.data.Dataset.from_tensor_slices(pairLabels)
         pair = tf.data.Dataset.zip((pair, pairLabels))
 
-        # Concatenate dataset with a radom shuffle
+        # Create the dataset
         self.dataset_size = numberImages*2
         self.dataset = tf.data.Dataset.sample_from_datasets([pair, wrong], weights=[0.5, 0.5])
 
 
-    def splitData(self, train_size=0.8, test_size=0.2):
+    def splitData(self, train_size=0.7, validation_size=0.15, test_size=0.15):
         ds_train=self.dataset.take(int(self.dataset_size*train_size))
-        ds_test=self.dataset.skip(int(self.dataset_size*test_size))
+
+        tmp_size = self.dataset_size - int(self.dataset_size*train_size)
+        tmp=self.dataset.skip(int(self.dataset_size*train_size))
+
+        ds_validation = tmp.take(int(tmp_size*validation_size))
+        ds_test = tmp.skip(int(tmp_size*validation_size))
 
         ds_train = ds_train.shuffle(300).batch(64)
 
-        return ds_train, ds_test
+        return ds_train, ds_validation, ds_test
 
 
     def showImages(self, number = 10):
