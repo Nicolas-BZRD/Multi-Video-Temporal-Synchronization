@@ -20,6 +20,10 @@ def my_app(cfg: DictConfig) -> None:
     # Fit
     siameseCNN.model.fit(ds_train, epochs=10, validation_data=ds_validation)
 
+    # Test
+    result = siameseCNN.model.evaluate()
+    print(result)
+
 
 if __name__ == "__main__":
     my_app()

@@ -1,4 +1,4 @@
-from tensorflow.keras import models, layers, backend
+from tensorflow.keras import models, layers, backend, metrics
 
 class SiameseCNN():
     def __init__(self, cfg, img_shape) -> None:
@@ -41,4 +41,4 @@ class SiameseCNN():
         self.model = models.Model(inputs=[left_input,right_input],outputs=prediction)
 
         # Compile the model
-        self.model.compile(loss="binary_crossentropy", optimizer="Adam", metrics=["accuracy"])
+        self.model.compile(loss="binary_crossentropy", optimizer="Adam", metrics=["accuracy", metrics.Recall(), metrics.Precision()])
