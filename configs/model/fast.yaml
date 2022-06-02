@@ -8,6 +8,6 @@ dropout:
 save: 
   final: false
   callback: false
-  path: "models/saved"
+  path: "model_saved"
 metrics:
   fbeta: 1

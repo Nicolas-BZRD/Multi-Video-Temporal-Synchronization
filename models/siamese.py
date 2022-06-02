@@ -49,11 +49,12 @@ class SiameseCNN():
         callback = []
         if(cfg.save.callback):
             callback.append(callbacks.ModelCheckpoint(
-                filepath=fr"{os.getcwd()}/{cfg.save.path}/weights",
+                filepath=fr"{os.getcwd()}/{cfg.save.path}/weights/weights",
                 save_weights_only=True,
                 monitor='val_accuracy',
                 mode='max',
                 save_best_only=True))
+        return callback
 
     def save(self, cfg):
-        self.model.save(fr"{os.getcwd()}/{cfg.save.path}/full")
+        self.model.save(fr"{os.getcwd()}/{cfg.save.path}/full/full")
