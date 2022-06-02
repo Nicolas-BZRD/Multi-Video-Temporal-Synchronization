@@ -1,9 +1,5 @@
-from gc import callbacks
 import os
-from unittest.mock import call
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
-import tensorflow as tf
 
 import hydra
 from omegaconf import DictConfig, OmegaConf
@@ -32,7 +28,7 @@ def my_app(cfg: DictConfig) -> None:
 
     # Test
     # Load best weights if callback checkpoint
-    if(cfg.model.save.callback): siameseCNN.loadWeights(fr"{cfg.model.save.path}/weights")
+    if(cfg.model.save.callback): siameseCNN.loadWeights(fr"{os.getcwd()}/{cfg.model.save.path}/weights/weights")
 
     loss, accuracy, recall, precision = siameseCNN.model.evaluate(ds_test)
     f = FScore(precision, recall, cfg.model.metrics.fbeta)
