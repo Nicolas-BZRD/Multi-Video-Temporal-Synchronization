@@ -58,3 +58,6 @@ class SiameseCNN():
 
     def save(self, cfg):
         self.model.save(fr"{os.getcwd()}/{cfg.save.path}/full/full")
+
+    def loadWeights(self, path):
+        self.model.load_weights(path)

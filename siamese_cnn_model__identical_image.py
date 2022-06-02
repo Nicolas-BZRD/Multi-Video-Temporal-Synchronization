@@ -31,6 +31,9 @@ def my_app(cfg: DictConfig) -> None:
     siameseCNN.model.fit(ds_train, epochs=cfg.model.hyperparameters.epochs, validation_data=ds_validation, callbacks=callbacks)
 
     # Test
+    # Load best weights if callback checkpoint
+    if(cfg.model.save.callback): siameseCNN.loadWeights(fr"{cfg.model.save.path}/weights")
+
     loss, accuracy, recall, precision = siameseCNN.model.evaluate(ds_test)
     f = FScore(precision, recall, cfg.model.metrics.fbeta)
     log.info(f"""
