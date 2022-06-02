@@ -44,15 +44,16 @@ class SiameseCNN():
         # Compile the model
         self.model.compile(loss="binary_crossentropy", optimizer="Adam", metrics=["accuracy", metrics.Recall(), metrics.Precision()])
 
-    def save(self, cfg):
-        self.model.save(fr"{os.getcwd()}/{cfg.path}/full")
-
+    
     def getCallBack(self, cfg):
         callback = []
         if(cfg.save.callback):
             callback.append(callbacks.ModelCheckpoint(
-                filepath=fr"{os.getcwd()}/{cfg.path}/weights",
+                filepath=fr"{os.getcwd()}/{cfg.save.path}/weights",
                 save_weights_only=True,
                 monitor='val_accuracy',
                 mode='max',
                 save_best_only=True))
+
+    def save(self, cfg):
+        self.model.save(fr"{os.getcwd()}/{cfg.save.path}/full")
