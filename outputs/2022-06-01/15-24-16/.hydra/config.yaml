@@ -1,8 +1,0 @@
-db:
-  path: datasets/ISIA
-  img_width: 224
-  img_heigth: 224
-  grayscale: true
-model:
-  dropout: none
-  hyperparameter: fast

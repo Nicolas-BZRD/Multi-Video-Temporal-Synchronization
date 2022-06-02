@@ -1,5 +1,5 @@
 hyperparameters:
-  epochs: 10
+  epochs: 50
 dropout:
   first: 0
   second: 0
@@ -7,7 +7,7 @@ dropout:
   fourth: 0
 save: 
   final: false
-  callback: false
+  callback: true
   path: "models/saved"
 metrics:
   fbeta: 1
