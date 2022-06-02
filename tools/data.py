@@ -4,19 +4,19 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 class Dataset:
-    def __init__(self, db) -> None:
-        path = fr"{os.getcwd()}/{db.path}"
+    def __init__(self, path: str, size: tuple, grayscale: bool) -> None:
+        path = fr"{os.getcwd()}/{path}"
         numberImages = len(os.listdir(fr"{path}/0/left"))
 
         # Get data from all the directories
-        mode = "grayscale" if db.grayscale else 'rgb'
+        mode = "grayscale" if grayscale else 'rgb'
         ds = [] #0->leftWrong, 1->rightWrong, 2->leftPair, 3->rightPair
         for label in range(0,2):
             for side in ['left', 'right']:
                 tmp = tf.keras.utils.image_dataset_from_directory(
                     fr"{path}/{label}/{side}",
                     color_mode=mode,
-                    image_size=(db.img_heigth, db.img_width),
+                    image_size=size,
                     batch_size=None,
                     labels=None,
                     shuffle=False
@@ -38,22 +38,18 @@ class Dataset:
 
         # Create the dataset
         self.size = numberImages*2
-        self.shape = (db.img_heigth, db.img_width,1) if db.grayscale else (db.img_heigth, db.img_width,3)
+        self.shape = (*size,1) if grayscale else (*size,3)
         self.data = tf.data.Dataset.sample_from_datasets([pair, wrong], weights=[0.5, 0.5])
 
 
-    def splitData(self, train_size=0.8, validation_size=0.1, test_size=0.1):
-        ds_train=self.data.take(int(self.size*train_size))
-        tmp=self.data.skip(int(self.size*train_size))
-
-        ds_validation = tmp.take(int(self.size*validation_size))
-        ds_test = tmp.skip(int(self.size*test_size))
+    def splitData(self, train_size=0.8):
+        ds_train = self.data.take(int(self.size*train_size))
+        ds_validation = self.data.skip(int(self.size*train_size))
 
         ds_train = ds_train.shuffle(300).batch(64)
         ds_validation = ds_validation.batch(64)
-        ds_test = ds_test.batch(64)
 
-        return ds_train, ds_validation, ds_test
+        return ds_train, ds_validation
 
 
     def showImages(self, number = 10):

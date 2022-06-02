@@ -15,34 +15,37 @@ log = logging.getLogger(__name__)
 def my_app(cfg: DictConfig) -> None:
     print(OmegaConf.to_yaml(cfg))
 
-    # Init all classes
-    dataset = Dataset(cfg.db)
-    siameseCNN = SiameseCNN(cfg.model, dataset.shape)
+    # Init train and test dataset
+    dataset = Dataset(cfg.db.path_train, (cfg.db.img_heigth, cfg.db.img_width), cfg.db.grayscale)
+    dataset_test = Dataset(cfg.db.path_test, (cfg.db.img_heigth, cfg.db.img_width), cfg.db.grayscale)
 
     # Process dataset
-    ds_train, ds_validation, ds_test = dataset.splitData()
+    ds_train, ds_validation = dataset.splitData()
+
+    # Init model
+    dropout = [cfg.model.dropout.first, cfg.model.dropout.second, cfg.model.dropout.third, cfg.model.dropout.fourth]
+    siameseCNN = SiameseCNN(dropout, dataset.shape)
+
+    # Process model
+    callbacks = []
+    if cfg.model.callback.checkpoint: callbacks.append(siameseCNN.checkpointCallback('weights'))
 
     # Fit
-    callbacks = siameseCNN.getCallBack(cfg.model)
-    siameseCNN.model.fit(ds_train, epochs=cfg.model.hyperparameters.epochs, validation_data=ds_validation, callbacks=callbacks)
+    if(cfg.model.other.fit):
+        siameseCNN.model.fit(ds_train, epochs=cfg.model.hyperparameters.epochs, validation_data=ds_validation, callbacks=callbacks)
 
     # Test
-    # Load best weights if callback checkpoint
-    if(cfg.model.save.callback): siameseCNN.loadWeights(fr"{os.getcwd()}/{cfg.model.save.path}/weights/weights")
+    if(cfg.model.other.load_weights):
+        siameseCNN.loadWeights(cfg.model.other.path_weights)
 
-    loss, accuracy, recall, precision = siameseCNN.model.evaluate(ds_test)
+    loss, accuracy, recall, precision = siameseCNN.model.evaluate(dataset_test)
     f = FScore(precision, recall, cfg.model.metrics.fbeta)
-    log.info(f"""
-    loss: {loss}
-    accuracy: {accuracy}
-    recall: {recall}
-    precision: {precision}
-    f{cfg.model.metrics.fbeta} score: {f}
-    """)
+
+    log.info(f"loss: {loss}\naccuracy: {accuracy}\nrecall: {recall}\nprecision: {precision}\nf{cfg.model.metrics.fbeta} score: {f}")
 
     # Save
-    if(cfg.model.save.final):
-        siameseCNN.save(cfg.model)
+    if(cfg.model.other.save):
+        siameseCNN.save(cfg.model.other.path_save)
 
 
 if __name__ == "__main__":

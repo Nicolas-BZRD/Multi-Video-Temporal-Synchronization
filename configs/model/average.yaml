@@ -5,9 +5,13 @@ dropout:
   second: 0
   third: 0
   fourth: 0
-save: 
-  final: false
-  callback: true
-  path: "model_saved"
 metrics:
   fbeta: 1
+callback:
+  checkpoint: true
+  path_checkpoint: weights/weights
+other:
+  fit: true
+  save: false
+  load_weights: true
+  path_weights: weights/weights

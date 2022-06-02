@@ -1,0 +1,20 @@
+db:
+  path_train: datasets/ISIA
+  path_test: datasets/CLICK
+  img_width: 224
+  img_heigth: 224
+  grayscale: true
+model:
+  hyperparameters:
+    epochs: 10
+  dropout:
+    first: 0
+    second: 0
+    third: 0
+    fourth: 0
+  save:
+    final: false
+    callback: false
+    path: model_saved
+  metrics:
+    fbeta: 1
