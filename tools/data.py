@@ -39,6 +39,7 @@ class Dataset:
         # Create the dataset
         self.size = numberImages*2
         self.shape = (*size,1) if grayscale else (*size,3)
+        self.grayscale = grayscale
         self.data = tf.data.Dataset.sample_from_datasets([pair, wrong], weights=[0.5, 0.5])
 
 
@@ -56,5 +57,9 @@ class Dataset:
         for images, labels in self.data.take(number):
             f, axarr = plt.subplots(1,2)
             f.suptitle(labels.numpy())
-            axarr[0].imshow(images[0][:,:,0].numpy(), cmap='gray', vmin=0, vmax=1)
-            axarr[1].imshow(images[1][:,:,0].numpy(), cmap='gray', vmin=0, vmax=1)
+            if(self.grayscale):
+                axarr[0].imshow(images[0][:,:,0].numpy(), cmap='gray', vmin=0, vmax=1)
+                axarr[1].imshow(images[1][:,:,0].numpy(), cmap='gray', vmin=0, vmax=1)
+            else:
+                axarr[0].imshow(images[0][:,:,:].numpy())
+                axarr[1].imshow(images[1][:,:,:].numpy())

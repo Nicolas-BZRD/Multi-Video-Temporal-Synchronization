@@ -1,0 +1,2 @@
+- model=average
+- model.other.fit=false

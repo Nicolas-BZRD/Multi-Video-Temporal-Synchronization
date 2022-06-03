@@ -1,0 +1,11 @@
+[2022-06-03 09:45:33,032][__main__][INFO] - loss: 0.5963056683540344
+accuracy: 0.6764158010482788
+recall: 0.8728266358375549
+precision: 0.6266607046127319
+f1 score: 0.7295375424169596
+[2022-06-03 09:45:33,120][tensorflow][WARNING] - Detecting that an object or model or tf.train.Checkpoint is being deleted with unrestored values. See the following logs for the specific values in question. To silence these warnings, use `status.expect_partial()`. See https://www.tensorflow.org/api_docs/python/tf/train/Checkpoint#restorefor details about the status object returned by the restore function.
+[2022-06-03 09:45:33,120][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.iter
+[2022-06-03 09:45:33,120][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.beta_1
+[2022-06-03 09:45:33,120][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.beta_2
+[2022-06-03 09:45:33,120][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.decay
+[2022-06-03 09:45:33,128][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.learning_rate

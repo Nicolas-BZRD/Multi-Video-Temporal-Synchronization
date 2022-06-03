@@ -1,0 +1,8 @@
+[2022-06-02 17:30:43,956][tensorflow][WARNING] - Model was constructed with shape (None, 224, 224, 1) for input KerasTensor(type_spec=TensorSpec(shape=(None, 224, 224, 1), dtype=tf.float32, name='input_1'), name='input_1', description="created by layer 'input_1'"), but it was called on an input with incompatible shape (224, 224, 1, 1).
+[2022-06-02 17:30:43,964][tensorflow][WARNING] - Model was constructed with shape (None, 224, 224, 1) for input KerasTensor(type_spec=TensorSpec(shape=(None, 224, 224, 1), dtype=tf.float32, name='input_2'), name='input_2', description="created by layer 'input_2'"), but it was called on an input with incompatible shape (224, 224, 1, 1).
+[2022-06-02 17:30:44,604][tensorflow][WARNING] - Detecting that an object or model or tf.train.Checkpoint is being deleted with unrestored values. See the following logs for the specific values in question. To silence these warnings, use `status.expect_partial()`. See https://www.tensorflow.org/api_docs/python/tf/train/Checkpoint#restorefor details about the status object returned by the restore function.
+[2022-06-02 17:30:44,605][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.iter
+[2022-06-02 17:30:44,606][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.beta_1
+[2022-06-02 17:30:44,607][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.beta_2
+[2022-06-02 17:30:44,607][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.decay
+[2022-06-02 17:30:44,608][tensorflow][WARNING] - Value in checkpoint could not be found in the restored object: (root).optimizer.learning_rate

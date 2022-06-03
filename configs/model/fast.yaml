@@ -1,5 +1,7 @@
 hyperparameters:
   epochs: 10
+  optimizer: "Adam"
+  loss: "binary_crossentropy"
 dropout:
   first: 0
   second: 0
@@ -9,6 +11,9 @@ metrics:
   fbeta: 1
 callback:
   checkpoint: false
+  path_checkpoint: weights/weights
 other:
   fit: true
   save: false
+  load_weights: false
+  path_weights: weights/weights

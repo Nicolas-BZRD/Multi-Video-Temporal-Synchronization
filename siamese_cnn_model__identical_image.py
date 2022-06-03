@@ -38,7 +38,8 @@ def my_app(cfg: DictConfig) -> None:
     if(cfg.model.other.load_weights):
         siameseCNN.loadWeights(cfg.model.other.path_weights)
 
-    loss, accuracy, recall, precision = siameseCNN.model.evaluate(dataset_test)
+    dataset_test.data = dataset_test.data.batch(1)
+    loss, accuracy, recall, precision = siameseCNN.model.evaluate(dataset_test.data)
     f = FScore(precision, recall, cfg.model.metrics.fbeta)
 
     log.info(f"loss: {loss}\naccuracy: {accuracy}\nrecall: {recall}\nprecision: {precision}\nf{cfg.model.metrics.fbeta} score: {f}")
