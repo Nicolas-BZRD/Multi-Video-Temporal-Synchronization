@@ -1,0 +1,3 @@
+- db=isia_lab_flow
+- model.other.fit=false
+- model.other.load_weights=true

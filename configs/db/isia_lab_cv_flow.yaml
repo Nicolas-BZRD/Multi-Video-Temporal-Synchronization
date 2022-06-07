@@ -1,0 +1,5 @@
+path_train: "datasets/ISIA_cv_flow"
+path_test: "datasets/CLICK_cv_flow"
+img_width: 224
+img_heigth: 224
+grayscale: false

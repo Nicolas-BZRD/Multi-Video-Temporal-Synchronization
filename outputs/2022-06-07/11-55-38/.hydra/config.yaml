@@ -1,0 +1,26 @@
+db:
+  path_train: datasets/ISIA_flow
+  path_test: datasets/CLICK_flow
+  img_width: 224
+  img_heigth: 224
+  grayscale: false
+model:
+  hyperparameters:
+    epochs: 10
+    optimizer: Adam
+    loss: binary_crossentropy
+  dropout:
+    first: 0
+    second: 0
+    third: 0
+    fourth: 0
+  metrics:
+    fbeta: 1
+  callback:
+    checkpoint: false
+    path_checkpoint: weights/weights
+  other:
+    fit: false
+    save: false
+    load_weights: true
+    path_weights: weights/weights
