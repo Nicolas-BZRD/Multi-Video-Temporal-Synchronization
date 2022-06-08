@@ -66,6 +66,7 @@ class SiameseCNN():
 
         cnn.add(layers.Conv2D(128, (3, 3), activation='relu'))
         cnn.add(layers.MaxPooling2D((2, 2)))
+        cnn.add(layers.Dropout(dropout[1]))
 
         cnn.add(layers.Conv2D(96, (1, 1), activation='relu'))
         cnn.add(layers.MaxPooling2D((2, 2)))
