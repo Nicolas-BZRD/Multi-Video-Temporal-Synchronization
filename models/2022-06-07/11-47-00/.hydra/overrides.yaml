@@ -1,4 +1,0 @@
-- db=isia_lab_flow
-- db.path_train=ISIA_flow
-- db.path_test=CLICK_flow
-- model=average

@@ -1,6 +1,6 @@
 db:
-  path_train: ISIA_flow
-  path_test: CLICK_flow
+  path_train: isia
+  path_test: click
   img_width: 224
   img_heigth: 224
   grayscale: false
@@ -23,4 +23,4 @@ model:
     fit: true
     save: false
     load_weights: true
-    path_weights: weights/weights
+    path_weights: weights

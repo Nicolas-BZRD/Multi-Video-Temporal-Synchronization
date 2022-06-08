@@ -1,0 +1,5 @@
+- db=isia_lab_cv_flow
+- db.path_train=isia
+- db.path_test=click
+- model=average
+- model.other.path_weights=weights

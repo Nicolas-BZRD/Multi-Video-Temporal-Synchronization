@@ -111,15 +111,11 @@ hydra:
   overrides:
     hydra:
     - hydra.mode=RUN
-    task:
-    - db=isia_lab_flow
-    - db.path_train=ISIA_flow
-    - db.path_test=CLICK_flow
-    - model=average
+    task: []
   job:
     name: siamese_cnn_model__identical_image
     chdir: null
-    override_dirname: db.path_test=CLICK_flow,db.path_train=ISIA_flow,db=isia_lab_flow,model=average
+    override_dirname: ''
     id: ???
     num: ???
     config_name: siamese_config
@@ -133,21 +129,21 @@ hydra:
   runtime:
     version: 1.2.0
     version_base: '1.2'
-    cwd: /content
+    cwd: C:\Users\Nicolas Boizard\OneDrive - JUNIA Grande école d'ingénieurs\M2\AI\Multi-Video-Temporal-Synchronization
     config_sources:
     - path: hydra.conf
       schema: pkg
       provider: hydra
-    - path: /content/Multi-Video-Temporal-Synchronization/configs
+    - path: C:\Users\Nicolas Boizard\OneDrive - JUNIA Grande école d'ingénieurs\M2\AI\Multi-Video-Temporal-Synchronization\configs
       schema: file
       provider: main
     - path: ''
       schema: structured
       provider: schema
-    output_dir: /content/outputs/2022-06-07/07-48-29
+    output_dir: C:\Users\Nicolas Boizard\OneDrive - JUNIA Grande école d'ingénieurs\M2\AI\Multi-Video-Temporal-Synchronization\outputs\2022-06-08\10-10-31
     choices:
-      model: average
-      db: isia_lab_flow
+      model: fast
+      db: isia_lab
       hydra/env: default
       hydra/callbacks: null
       hydra/job_logging: default
