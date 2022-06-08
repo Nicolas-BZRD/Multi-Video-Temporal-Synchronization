@@ -47,8 +47,8 @@ class Dataset:
         ds_train = self.data.take(int(self.size*train_size))
         ds_validation = self.data.skip(int(self.size*train_size))
 
-        ds_train = ds_train.shuffle(300).batch(64)
-        ds_validation = ds_validation.batch(64)
+        ds_train = ds_train.shuffle(1000).batch(64).prefetch(1)
+        ds_validation = ds_validation.batch(64).prefetch(1)
 
         return ds_train, ds_validation
 
