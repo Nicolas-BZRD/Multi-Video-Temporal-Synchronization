@@ -12,6 +12,8 @@ metrics:
 callback:
   checkpoint: true
   path_checkpoint: weights/weights
+  tensorboard: false
+  path_log: /content/log
 other:
   fit: true
   save: false

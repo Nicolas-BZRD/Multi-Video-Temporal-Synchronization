@@ -5,8 +5,6 @@ class SiameseCNN():
     def __init__(self, dropout: list, img_shape: tuple, v=1) -> None:
         self.version = v
 
-        
-
         if(v==1):
             self._v1(dropout, img_shape)
         elif(v==2):
@@ -103,6 +101,9 @@ class SiameseCNN():
             monitor='val_accuracy',
             mode='max',
             save_best_only=True)
+
+    def tensorboardCallback(self, LOG_PATH):
+        return callbacks.TensorBoard(log_dir=LOG_PATH, histogram_freq=1)
 
     def loadWeights(self, path):
         self.model.load_weights(fr"{os.getcwd()}/{path}")
