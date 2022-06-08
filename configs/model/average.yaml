@@ -19,3 +19,4 @@ other:
   save: false
   load_weights: true
   path_weights: weights/weights
+  path_save: full/
