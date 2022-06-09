@@ -24,7 +24,7 @@ def my_app(cfg: DictConfig) -> None:
 
     # Init model
     dropout = [cfg.model.dropout.first, cfg.model.dropout.second, cfg.model.dropout.third, cfg.model.dropout.fourth]
-    siameseCNN = SiameseCNN(dropout, dataset.shape, cfg.model_version)
+    siameseCNN = SiameseCNN(dropout, dataset.shape)
 
     # Process model
     callbacks = []

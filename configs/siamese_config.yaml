@@ -1,4 +1,3 @@
 defaults:
   - db: isia_lab
   - model: fast
-model_version: 1
