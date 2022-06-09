@@ -3,9 +3,9 @@ hyperparameters:
   optimizer: "Adam"
   loss: "binary_crossentropy"
 dropout:
-  first: 0.1
+  first: 0.2
   second: 0.1
-  third: 0.15
+  third: 0.1
   fourth: 0.2
 metrics:
   fbeta: 1
