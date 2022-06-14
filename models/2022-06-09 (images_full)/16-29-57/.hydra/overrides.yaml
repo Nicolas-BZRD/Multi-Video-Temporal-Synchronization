@@ -1,0 +1,5 @@
+- db=isia_lab
+- db.path_train=ISIA
+- db.path_test=CLICK
+- model=complete
+- model.other.path_weights=weights

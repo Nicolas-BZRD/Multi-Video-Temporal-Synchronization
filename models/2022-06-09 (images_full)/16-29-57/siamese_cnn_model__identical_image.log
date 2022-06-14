@@ -1,0 +1,6 @@
+[2022-06-09 18:25:35,911][__main__][INFO] - loss: 0.5104208588600159
+accuracy: 0.7485718131065369
+recall: 0.8851217031478882
+precision: 0.6952492594718933
+f1 score: 0.7787794425632248
+[2022-06-09 18:25:37,590][tensorflow][INFO] - Assets written to: /content/full/assets
