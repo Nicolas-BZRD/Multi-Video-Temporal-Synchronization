@@ -1,0 +1,72 @@
+"""## Model"""
+
+model = tf.keras.models.Sequential()
+
+############
+# Encoding #
+############
+
+model.add(tf.keras.layers.Conv2D(256, (3, 3), activation='elu', input_shape=(224,224,3), padding="same"))
+model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.MaxPooling2D((2, 2), padding="same"))
+
+model.add(tf.keras.layers.Conv2D(128, (3, 3), activation='elu', padding="same"))
+model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.MaxPooling2D((2, 2), padding="same"))
+# model.add(tf.keras.layers.SpatialDropout2D(0.35))
+
+model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='elu', padding="same"))
+model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.MaxPooling2D((2, 2), padding="same"))
+# model.add(tf.keras.layers.SpatialDropout2D(0.4))
+
+model.add(tf.keras.layers.Conv2D(16, (3, 3), activation='elu', padding="same"))
+model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.MaxPooling2D((2, 2), padding="same"))
+# model.add(tf.keras.layers.SpatialDropout2D(0.45))
+
+
+# model.add(tf.keras.layers.Flatten())
+# model.add(tf.keras.layers.Dense(1024, activation='relu'))
+# model.add(tf.keras.layers.Dropout(0.3))
+
+# model.add(tf.keras.layers.Dense(512, activation='relu'))
+# model.add(tf.keras.layers.Dropout(0.2))
+
+# model.add(tf.keras.layers.Dense(128, activation='relu'))
+
+
+# ############
+# # Decoding #
+# ############
+
+# model.add(tf.keras.layers.Dense(512, activation='relu'))
+# model.add(tf.keras.layers.Dropout(0.2))
+
+# model.add(tf.keras.layers.Dense(1024, activation='relu'))
+# model.add(tf.keras.layers.Dropout(0.3))
+# model.add(tf.keras.layers.Dense(3136, activation='relu'))
+# model.add(tf.keras.layers.Reshape((14,14,16)))
+
+model.add(tf.keras.layers.Conv2D(16, (3, 3), activation='elu', padding='same'))
+model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.UpSampling2D((2, 2)))
+# model.add(tf.keras.layers.SpatialDropout2D(0.34))
+
+model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='elu', padding='same'))
+model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.UpSampling2D((2, 2)))
+# model.add(tf.keras.layers.SpatialDropout2D(0.35))
+
+model.add(tf.keras.layers.Conv2D(128, (3, 3), activation='elu', padding='same'))
+model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.UpSampling2D((2, 2)))
+
+model.add(tf.keras.layers.Conv2D(256, (3, 3), activation='elu', padding='same'))
+model.add(tf.keras.layers.BatchNormalization())
+model.add(tf.keras.layers.UpSampling2D((2, 2)))
+model.add(tf.keras.layers.Conv2D(3, (3, 3), activation='sigmoid', padding='same'))
+
+model.summary()
+
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=["accuracy"])
