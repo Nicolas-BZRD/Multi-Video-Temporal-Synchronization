@@ -1,0 +1,2 @@
+model_checkpoint_path: "smallDelay"
+all_model_checkpoint_paths: "smallDelay"

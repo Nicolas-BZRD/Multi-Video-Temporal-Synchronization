@@ -2,11 +2,6 @@ hyperparameters:
   epochs: 50
   optimizer: "Adam"
   loss: "binary_crossentropy"
-dropout:
-  first: 0
-  second: 0
-  third: 0
-  fourth: 0
 metrics:
   fbeta: 1
 callback:

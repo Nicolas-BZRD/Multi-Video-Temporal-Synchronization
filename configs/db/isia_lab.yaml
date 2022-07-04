@@ -1,5 +1,0 @@
-path_train: "datasets/ISIA"
-path_test: "datasets/CLICK"
-img_width: 224
-img_heigth: 224
-grayscale: true
