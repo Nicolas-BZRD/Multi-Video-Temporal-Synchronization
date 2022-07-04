@@ -27,7 +27,7 @@ def my_app(cfg: DictConfig) -> None:
 
     # Process model
     callbacks = []
-    if cfg.model.callback.checkpoint: callbacks.append(siameseCNN.checkpointCallback('weights'))
+    if cfg.model.callback.checkpoint: callbacks.append(siameseCNN.checkpointCallback(cfg.model.callback.path_checkpoint))
     if cfg.model.callback.tensorboard: callbacks.append(siameseCNN.tensorboardCallback(cfg.model.callback.path_log))
 
     # Fit
