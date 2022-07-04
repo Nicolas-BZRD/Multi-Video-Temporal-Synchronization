@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 class Dataset:
     def __init__(self, path: str, size: tuple, grayscale: bool) -> None:
         path = fr"{os.getcwd()}/{path}"
-        numberImages = len(os.listdir(fr"{path}/0/left"))
+        numberImages = len(os.listdir(fr"{path}/good/left"))
 
         # Get data from all the directories
         mode = "grayscale" if grayscale else 'rgb'
