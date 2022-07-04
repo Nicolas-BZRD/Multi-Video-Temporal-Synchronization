@@ -8,24 +8,24 @@ class SiameseCNN():
 
         # Convolutional Neural Network
         cnn = models.Sequential()
-        cnn.add(layers.Conv2D(32, (3, 3), activation='elu', input_shape=img_shape))
-        cnn.add(layers.BatchNormalization())
+        cnn.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=img_shape))
+        # cnn.add(layers.BatchNormalization())
         cnn.add(layers.MaxPooling2D((3, 3)))
 
-        cnn.add(layers.Conv2D(48, (3, 3), activation='elu'))
-        cnn.add(layers.BatchNormalization())
+        cnn.add(layers.Conv2D(48, (3, 3), activation='relu'))
+        # cnn.add(layers.BatchNormalization())
         cnn.add(layers.MaxPooling2D((2, 2)))
 
-        cnn.add(layers.Conv2D(48, (3, 3), activation='elu'))
-        cnn.add(layers.BatchNormalization())
+        cnn.add(layers.Conv2D(48, (3, 3), activation='relu'))
+        # cnn.add(layers.BatchNormalization())
         cnn.add(layers.MaxPooling2D((2, 2)))
 
-        cnn.add(layers.Conv2D(64, (3, 3), activation='elu'))
-        cnn.add(layers.BatchNormalization())
+        cnn.add(layers.Conv2D(64, (3, 3), activation='relu'))
+        # cnn.add(layers.BatchNormalization())
         cnn.add(layers.MaxPooling2D((2, 2)))
 
         cnn.add(layers.GlobalAveragePooling2D())
-        cnn.add(layers.Dense(48, activation='elu'))
+        cnn.add(layers.Dense(48, activation='relu'))
 
         # Generate the encodings (feature vectors) for the two images
         left_feats = cnn(left_input)
