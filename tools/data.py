@@ -11,7 +11,7 @@ class Dataset:
         # Get data from all the directories
         mode = "grayscale" if grayscale else 'rgb'
         ds = [] #0->leftWrong, 1->rightWrong, 2->leftPair, 3->rightPair
-        for label in range(0,2):
+        for label in ['wrong', 'good']:
             for side in ['left', 'right']:
                 tmp = tf.keras.utils.image_dataset_from_directory(
                     fr"{path}/{label}/{side}",
