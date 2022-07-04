@@ -5,7 +5,7 @@ import hydra
 from omegaconf import DictConfig, OmegaConf
 import logging
 
-from models.siamese import SiameseCNN
+from models.siamese.siamese import SiameseCNN
 from tools.data import Dataset
 from tools.fscore import FScore
 
