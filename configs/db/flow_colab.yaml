@@ -1,5 +1,5 @@
-path_train: "/content/ISIA/flows"
-path_test: "/content/CLICK/flows"
+path_train: "ISIA/flows"
+path_test: "CLICK/flows"
 img_width: 224
 img_heigth: 224
 grayscale: false
