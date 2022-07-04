@@ -6,7 +6,7 @@ metrics:
   fbeta: 1
 callback:
   checkpoint: false
-  path_checkpoint: weights/weights
+  path_checkpoint: weights
   tensorboard: false
   path_log: /content/log
 other:
