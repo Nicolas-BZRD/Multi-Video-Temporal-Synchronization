@@ -16,6 +16,10 @@ class SiameseCNN():
         cnn.add(layers.BatchNormalization())
         cnn.add(layers.MaxPooling2D((2, 2)))
 
+        cnn.add(layers.Conv2D(48, (3, 3), activation='elu'))
+        cnn.add(layers.BatchNormalization())
+        cnn.add(layers.MaxPooling2D((2, 2)))
+
         cnn.add(layers.Conv2D(64, (3, 3), activation='elu'))
         cnn.add(layers.BatchNormalization())
         cnn.add(layers.MaxPooling2D((2, 2)))
