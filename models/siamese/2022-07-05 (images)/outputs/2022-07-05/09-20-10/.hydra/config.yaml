@@ -1,0 +1,24 @@
+db:
+  path_train: ISIA/images
+  path_test: CLICK/images
+  img_width: 224
+  img_heigth: 224
+  grayscale: true
+model:
+  hyperparameters:
+    epochs: 100
+    optimizer: Adam
+    loss: binary_crossentropy
+  metrics:
+    fbeta: 1
+  callback:
+    checkpoint: true
+    path_checkpoint: weights/weights
+    tensorboard: true
+    path_log: /content/log
+  other:
+    fit: true
+    save: true
+    load_weights: true
+    path_weights: weights/weights
+    path_save: full/
