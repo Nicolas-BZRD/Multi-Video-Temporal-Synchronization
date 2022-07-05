@@ -3,6 +3,8 @@ from tensorflow.keras import applications, models, layers, backend, metrics, cal
 
 class SiameseCNN():
     def __init__(self, img_shape: tuple) -> None:
+        print("WARNING - RESNET needs an image in the range [0,255] and in color, disable normalization between [0,1] in the data class before execution and set channel in rgb mode!")
+
         left_input = layers.Input(img_shape)
         right_input = layers.Input(img_shape)
 
@@ -14,10 +16,19 @@ class SiameseCNN():
         )
         efficient.trainable=False
 
+        # Set top layers trainable
+        for layer in efficient.layers:
+            if layer.name == 'block6e_se_excite':
+                set_trainable = True
+            if set_trainable:
+                if not isinstance(layer, layers.BatchNormalization):
+                    layer.trainable = True
+
         # Convolutional Neural Network
         cnn = models.Sequential()
         cnn.add(efficient)
         cnn.add(layers.GlobalAveragePooling2D())
+        cnn.add(layers.Dense(512, activation='relu'))
         cnn.add(layers.Dense(48, activation='relu'))
 
         # Generate the encodings (feature vectors) for the two images
