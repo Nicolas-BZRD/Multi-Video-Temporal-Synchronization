@@ -1,0 +1,5 @@
+path_train: "ISIA/images"
+path_test: "CLICK/images"
+img_width: 224
+img_heigth: 224
+grayscale: true
