@@ -8,6 +8,7 @@ class SiameseCNN():
 
         # Load efficient net
         efficient = applications.EfficientNetB2(
+            weights="imagenet",
             include_top=False,
             input_shape=img_shape,
         )
